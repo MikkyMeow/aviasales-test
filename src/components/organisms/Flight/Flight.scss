@@ -1,0 +1,24 @@
+.flight-section {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  width: 100%;
+  padding: 26px 20px;
+  box-sizing: border-box;
+}
+
+.flight__price {
+  width: 147px;
+  font-size: 24px;
+  line-height: 24px;
+  color: #2196F3;
+  margin-bottom: 20px;
+}
+
+.flight__logo {
+  margin-bottom: 20px;
+}
+
+table {
+  width: 100%;
+}

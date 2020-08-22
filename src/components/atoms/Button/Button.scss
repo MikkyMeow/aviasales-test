@@ -1,0 +1,34 @@
+@import './../../../styles/variables';
+
+.button {
+  width: 50%;
+  font-family: $fontFamily;
+  font-size: 12px;
+  line-height: 20px;
+  text-transform: uppercase;
+  border: none;
+  background: none;
+  border-right: 1px solid #dfe5ec;
+  border-radius: 5px;
+
+  &:hover {
+    background-color: $hover;
+  }
+
+  &:last-child {
+    border-right: none;
+  }
+
+  &.active {
+    background-color: #2196F3;
+    color: #fff;
+  }
+  
+  &.cheapest {
+    border-radius: 5px 0 0 5px;
+  }
+
+  &.fastest {
+    border-radius: 0 5px 5px 0;
+  }
+}

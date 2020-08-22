@@ -1,26 +1,28 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from 'react'
+import Logo from './components/atoms/Logo'
+import Filter from './components/organisms/Filter'
+import FlightSelector from './components/organisms/FlightSelector'
+import Flight from './components/organisms/Flight'
+import './styles/style.scss'
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+    <div className="wrapper">
+      <header className="header">
+        <Logo />
       </header>
+      <div className="row">
+        <div className="sidebar">
+          <Filter />
+        </div>
+        <main className="main">
+          <FlightSelector />
+          <Flight price="13 400"/>
+        </main>
+      </div>
     </div>
-  );
+    
+  )
 }
 
-export default App;
+export default App

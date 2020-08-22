@@ -1,0 +1,23 @@
+@import './variables';
+@import './fonts';
+
+body {
+  background: $background;
+}
+
+.row {
+  display: flex;
+  max-width: 754px;
+  margin: 0 auto;
+}
+
+.header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+
+.main {
+  width: 502px;
+}
