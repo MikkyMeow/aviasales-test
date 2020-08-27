@@ -1,14 +1,28 @@
 import React from 'react'
 import TableData from './../../atoms/TableData'
 
-const TableRow = () => {
+const TableRow = (props) => {
+  const transferLength = props.transfer.length
+
+  const declension = (amount) => {
+    switch (amount) {
+      case 1:
+        return('пересадка')
+      case 2:
+      case 3:
+        return('пересадки')
+      default:
+        return('пересадок')
+    }
+  }
+
   return (
     <table className="table">
       <tbody>
         <tr>
-          <TableData title="MOW - HKT" descr="10:45 - 08:00" />
-          <TableData title="В пути" descr="21ч 15м" />
-          <TableData title="2 пересадки" descr="HKG, JNB" />
+          <TableData title={`${props.from} - ${props.to}`} descr={props.time} />
+          <TableData title="В пути" descr={props.duration} />
+          <TableData title={`${transferLength} ${declension(transferLength)}`} descr={props.transfer.join(', ')} />
         </tr>
         </tbody>
     </table>
