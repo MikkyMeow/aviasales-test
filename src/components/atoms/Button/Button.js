@@ -1,10 +1,10 @@
 import React from 'react'
 import './Button.scss'
 
-const Button = (props) => {
+const Button = ({className, name, value, clickHandler}) => {
   return (
-    <button className={`button ${props.class}`}>
-      {props.value}
+    <button className={`button ${className}`} onClick={e => clickHandler(value)} >
+      {name}
     </button>
   )
 }

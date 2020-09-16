@@ -34,10 +34,9 @@ const checkboxList = [
 const Filter = ({filterArray}) => {
 
   return (
-    <Section class="filter-section">
-      <h2 className="filter__title">Количество пересадок</h2>
-      {/* <Checkbox value="Все" id={'all'} /> */}
-      {checkboxList && checkboxList.map(({value, id, isSelected}) => <Checkbox key={id} value={value} id={id} checked={isSelected} filterArray={filterArray}/>)}
+    <Section className="filter-section">
+      <h2 className="filter__title">Количество</h2>
+      {checkboxList && checkboxList.map(({value, id}) => <Checkbox key={id} value={value} id={id} checked={false} filterArray={filterArray}/>)}
     </Section>
   )
 }

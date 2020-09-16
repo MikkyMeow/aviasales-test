@@ -57,7 +57,7 @@ const App =  () =>  {
           <Filter filterArray={filterArray}/>
         </div>
         <main className="main">
-          <FlightSelector />
+          <FlightSelector flight={flight} />
           {flight.map(item => filterCheck(item, filter))}
           <p></p>
         </main>

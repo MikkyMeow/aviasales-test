@@ -6,7 +6,7 @@ import './Flight.scss'
 
 const Flight = (data) => {
   return (
-    <Section class="flight-section">
+    <Section className="flight-section">
       <div className="flight__price">
         {data.price} P
       </div>

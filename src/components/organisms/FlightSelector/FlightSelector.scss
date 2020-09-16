@@ -4,4 +4,12 @@
   box-sizing: border-box;
   min-height: 50px;
   border: 1px solid #dfe5ec;
+
+  &__cheapest {
+    border-radius: 5px 0 0 5px;
+  }
+
+  &__fastest {
+    border-radius: 0 5px 5px 0;
+  }
 }

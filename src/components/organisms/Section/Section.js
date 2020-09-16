@@ -1,10 +1,10 @@
 import React from 'react'
 import './Section.scss'
 
-const Section = (props) => {
+const Section = ({className, children}) => {
   return (
-    <section className={`section ${props.class}`}>
-      {props.children}
+    <section className={`section ${className}`}>
+      {children}
     </section>
   )
 }
