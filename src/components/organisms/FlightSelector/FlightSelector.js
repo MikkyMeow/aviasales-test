@@ -11,9 +11,6 @@ const FlightSelector = () => {
     { name: 'Самый быстрый', value: 'fastest', isActive: false },
   ])
 
-  // добавлять класс active при нажатии на кнопку
-  // в handleActive сделать копию массива, по value заменить isActive, отдать измененный массив
-
   const handleActive = value => {
     setFlightSortButtons(
       
@@ -29,7 +26,8 @@ const FlightSelector = () => {
           ...obj,
           isActive: false
         }
-      }))
+      })
+    )
   }
     
   return (

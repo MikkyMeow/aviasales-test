@@ -17,8 +17,6 @@ const App =  () =>  {
   const [filter, setFilter] = useState([])
   
   const filterArray = (value, isSelected) => {
-    console.log('value is: ' + value);
-    console.log('isSelected is: ' + isSelected);
 
     const indexArray = filter.indexOf(value)
     if (indexArray === -1) {
