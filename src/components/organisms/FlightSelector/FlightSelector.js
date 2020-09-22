@@ -8,7 +8,7 @@ const buttons = [
   { name: 'Самый быстрый', value: 'fastest', isActive: false },
 ]
 
-const FlightSelector = ({sortByCheapest}) => {
+const FlightSelector = ({sortButton}) => {
   
   const [flightSortButtons, setFlightSortButtons] = useState(buttons)
   
@@ -41,7 +41,7 @@ const FlightSelector = ({sortByCheapest}) => {
           className={`flight-selector__${elem.value} ${elem.isActive === true ? 'active' : ''}`} 
           value={elem.value} 
           clickHandler={handleActive} 
-          sortByCheapest={sortByCheapest}
+          sortButton={sortButton}
         />))}
     </Section>
   )

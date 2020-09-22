@@ -35,14 +35,18 @@ const App =  () =>  {
     )
   }, [selectedCheckbox])
 
-  const sortByCheapest = () => {
-    setCurrentFlights(
-      [...currentFlights].sort((a, b) => a.price - b.price)
-    )
+  const sortButton = (value) => {
+    if (value === 'cheapest') {
+      setCurrentFlights(
+        [...currentFlights].sort((a, b) => a.price - b.price)
+      )
+    }
+    if (value === 'fastest') {
+      setCurrentFlights(
+        [...currentFlights].sort((a, b) => a.duration - b.duration)
+      )
+    }
   }
-
-
-  console.log('currentflights ', currentFlights);
 
   return (
     <div className='wrapper'>
@@ -57,7 +61,7 @@ const App =  () =>  {
         </div>
         <main className='main'>
           <FlightSelector
-            sortByCheapest={sortByCheapest}
+            sortButton={sortButton}
           />
           {currentFlights && currentFlights.map(item => {
             return (
