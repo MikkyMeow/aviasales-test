@@ -1,9 +1,17 @@
 import React from 'react'
 import './Button.scss'
 
-const Button = ({className, name, value, clickHandler}) => {
+const Button = ({className, name, value, clickHandler, sortByCheapest}) => {
+
   return (
-    <button className={`button ${className}`} onClick={e => clickHandler(value)} >
+    <button 
+      className={`button ${className}`} 
+      onClick={e => {
+        clickHandler(value)
+        sortByCheapest()
+      }}
+
+    >
       {name}
     </button>
   )

@@ -4,7 +4,7 @@ import { ReactComponent as Icon } from '../../../assets/svg/logo.svg'
 
 const Logo = () => {
   return(
-    <div className="logo">
+    <div className='logo'>
       <Icon />
     </div>
   )

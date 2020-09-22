@@ -1,8 +1,7 @@
 import React from 'react'
 import TableData from './../../atoms/TableData'
 
-const TableRow = (props) => {
-  const transferLength = props.transfer.length
+const TableRow = ({from, to, duration, transfer, time}) => {
 
   const declension = (amount) => {
     switch (amount) {
@@ -17,12 +16,12 @@ const TableRow = (props) => {
   }
 
   return (
-    <table className="table">
+    <table className='table'>
       <tbody>
         <tr>
-          <TableData title={`${props.from} - ${props.to}`} descr={props.time} />
-          <TableData title="В пути" descr={props.duration} />
-          <TableData title={`${transferLength} ${declension(transferLength)}`} descr={props.transfer.join(', ')} />
+          <TableData title={`${from} - ${to}`} descr={time} />
+          <TableData title='В пути' descr={duration} />
+          <TableData title={`${transfer.length} ${declension(transfer.length)}`} descr={transfer.join(', ')} />
         </tr>
         </tbody>
     </table>

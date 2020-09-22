@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import Logo from './components/atoms/Logo'
 import Filter from './components/organisms/Filter'
 import FlightSelector from './components/organisms/FlightSelector'
@@ -7,57 +7,72 @@ import data from './data.js'
 // import axios from 'axios'
 import './styles/style.scss'
 
-const flight = data.flights;
+const flights = data.flights
+const checkboxListArr = data.checkboxList
 
 const App =  () =>  {
 
+  // Запрос на бэк
   // const result = axios.get('https://front-test.beta.aviasales.ru/tickets?searchId=clzw')
-  // console.log(result, 'result')
 
-  const [filter, setFilter] = useState([])
-  
-  const filterArray = (value, isSelected) => {
+  // работа чекбоксов
+  const [checkboxList, setCheckboxList] = useState(checkboxListArr)
+  const [selectedCheckbox, setSelectedCheckbox] = useState([])
+  const [currentFlights, setCurrentFlights] = useState(flights)
 
-    const indexArray = filter.indexOf(value)
-    if (indexArray === -1) {
-      setFilter([
-          ...filter,
-          value
-        ]
-      )
-    } else {
-      const removeItem = [...filter.slice(0, indexArray),
-        ...filter.slice(indexArray + 1)]
-      setFilter(removeItem)
-    }
+  useEffect(() => {
+    setSelectedCheckbox(checkboxList.map(elem => elem.isSelected ? elem.value : null ))
+  }, [checkboxList])
 
-  }
-
-  function filterCheck(item, filter) {
-    if(filter.includes('all', 0)) {
-      return <Flight key={item.id} {...item} />
-    }
-
-    for (let i = 0; i < filter.length; i++) {
-      if (item.transfer.length === filter[i]) {
-        return <Flight key={item.id} {...item} />
+  useEffect(() => {
+    selectedCheckbox.length &&
+    setCurrentFlights(
+    flights.filter(item => {
+      if (selectedCheckbox.includes(item.transfer.length)) {
+        return item
       }
-    }
+    })
+    )
+  }, [selectedCheckbox])
+
+  const sortByCheapest = () => {
+    setCurrentFlights(
+      [...currentFlights].sort((a, b) => a.price - b.price)
+    )
   }
+
+
+  console.log('currentflights ', currentFlights);
 
   return (
-    <div className="wrapper">
-      <header className="header">
+    <div className='wrapper'>
+      <header className='header'>
         <Logo />
       </header>
-      <div className="row">
-        <div className="sidebar">
-          <Filter filterArray={filterArray}/>
+      <div className='row'>
+        <div className='sidebar'>
+          <Filter 
+            checkboxList={checkboxList} 
+            setCheckboxList={setCheckboxList} />
         </div>
-        <main className="main">
-          <FlightSelector flight={flight} />
-          {flight.map(item => filterCheck(item, filter))}
-          <p></p>
+        <main className='main'>
+          <FlightSelector
+            sortByCheapest={sortByCheapest}
+          />
+          {currentFlights && currentFlights.map(item => {
+            return (
+              <Flight 
+                key={item.id}
+                price={item.price}
+                from={item.from}
+                to={item.to}
+                duration={item.duration}
+                transfer={item.transfer}
+                time={item.time}
+              />  
+            )
+          }
+          )}
         </main>
       </div>
     </div>
