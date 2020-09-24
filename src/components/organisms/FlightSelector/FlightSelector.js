@@ -1,21 +1,12 @@
-import React, { useState } from 'react'
+import React from 'react'
 import Section from './../Section'
 import Button from './../../atoms/Button'
 import './FlightSelector.scss'
 
-const buttons = [
-  { name: 'Самый дешевый', value: 'cheapest', isActive: false },
-  { name: 'Самый быстрый', value: 'fastest', isActive: false },
-]
-
-const FlightSelector = ({sortButton}) => {
+const FlightSelector = ({flightSortButtons, setFlightSortButtons, setActiveSortButton}) => {
   
-  const [flightSortButtons, setFlightSortButtons] = useState(buttons)
-  
-
   const handleActive = value => {
     setFlightSortButtons(
-      
       flightSortButtons.map(obj => {
         if (obj.value === value) {
           return {
@@ -23,7 +14,6 @@ const FlightSelector = ({sortButton}) => {
             isActive: true
           }
         }
-
         return {
           ...obj,
           isActive: false
@@ -40,8 +30,8 @@ const FlightSelector = ({sortButton}) => {
           name={elem.name} 
           className={`flight-selector__${elem.value} ${elem.isActive === true ? 'active' : ''}`} 
           value={elem.value} 
-          clickHandler={handleActive} 
-          sortButton={sortButton}
+          clickHandler={handleActive}
+          setActiveSortButton={setActiveSortButton}
         />))}
     </Section>
   )

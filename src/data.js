@@ -65,12 +65,15 @@ export default {
     }
 
   ],
-  
   checkboxList: [
-    { id: 1, name: 'Все пересадки', value: 'all', isSelected: true },
-    { id: 2, name: 'Без пересадок', value: 0, isSelected: true },
-    { id: 3, name: '1 пересадка', value: 1, isSelected: true },
-    { id: 4, name: '2 пересадки', value: 2, isSelected: true },
-    { id: 5, name: '3 пересадки', value: 3, isSelected: true },
+    { id: 1, name: 'Все пересадки', value: 'all', isSelected: false },
+    { id: 2, name: 'Без пересадок', value: 0, isSelected: false },
+    { id: 3, name: '1 пересадка', value: 1, isSelected: false },
+    { id: 4, name: '2 пересадки', value: 2, isSelected: false },
+    { id: 5, name: '3 пересадки', value: 3, isSelected: false },
   ],
+  buttonSelector: [
+    { name: 'Самый дешевый', value: 'cheapest', isActive: false },
+    { name: 'Самый быстрый', value: 'fastest', isActive: false },
+  ]
 }
