@@ -1,4 +1,4 @@
-.flight-section {
+.ticket-section {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
@@ -7,7 +7,7 @@
   box-sizing: border-box;
 }
 
-.flight__price {
+.ticket__price {
   width: 147px;
   font-size: 24px;
   line-height: 24px;
@@ -15,7 +15,7 @@
   margin-bottom: 20px;
 }
 
-.flight__logo {
+.ticket__logo {
   margin-bottom: 20px;
 }
 

@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import Logo from './components/atoms/Logo'
 import Filter from './components/organisms/Filter'
 import FlightSelector from './components/organisms/FlightSelector'
-import Flight from './components/organisms/Flight'
+import Ticket from './components/organisms/Ticket'
 import { data } from './data.js'
 import {getTicketList} from './store/reducers/ticketList'
 // import axios from 'axios'
@@ -24,7 +24,7 @@ const App =  () =>  {
   // создание массива выбранных чекбоксов
   const [selectedCheckbox, setSelectedCheckbox] = useState([])
   // рендеринг доступных билетов согласно фильтрам и сортировке
-  const [currentFlights, setCurrentFlights] = useState(tickets)
+  const [currentTickets, setCurrentTickets] = useState(tickets)
   // рендеринг кнопок сортировки билетов
   const [flightSortButtons, setFlightSortButtons] = useState(buttonSelector)
   // создание массива выбранной сортировки
@@ -33,10 +33,6 @@ const App =  () =>  {
   useEffect(() => {
     dispatch(getTicketList(2))
   }, [dispatch])
-
-  // useEffect(() => {
-  //   flights = 
-  // }, [flights])
 
   // изменяет массив выбранных чекбоксов
   useEffect(() => {
@@ -63,7 +59,7 @@ const App =  () =>  {
       console.log(arrFlight);
       arrFlight.sort((a, b) => a.duration - b.duration)
     }
-    setCurrentFlights(
+    setCurrentTickets(
       arrFlight 
     )
     
@@ -86,9 +82,9 @@ const App =  () =>  {
             setFlightSortButtons={setFlightSortButtons}
             setActiveSortButton={setActiveSortButton}
           />
-          {currentFlights && currentFlights.map(item => {
+          {currentTickets && currentTickets.map(item => {
             return (
-              <Flight 
+              <Ticket 
                 key={item.id}
                 price={item.price}
                 from={item.from}
