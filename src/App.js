@@ -1,13 +1,14 @@
 import React, { useState, useEffect } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
 import Logo from './components/atoms/Logo'
 import Filter from './components/organisms/Filter'
 import FlightSelector from './components/organisms/FlightSelector'
 import Flight from './components/organisms/Flight'
-import data from './data.js'
+import { data } from './data.js'
+import {getTicketList} from './store/reducers/ticketList'
 // import axios from 'axios'
 import './styles/style.scss'
 
-const flights = data.flights
 const checkboxListArr = data.checkboxList
 const buttonSelector = data.buttonSelector
 
@@ -15,17 +16,27 @@ const App =  () =>  {
 
   // Запрос на бэк
   // const result = axios.get('https://front-test.beta.aviasales.ru/tickets?searchId=clzw')
-
+  const dispatch = useDispatch()
+  const tickets = useSelector(state => state.ticketList)
+  
   // рендеринг списка чекбоксов
   const [checkboxList, setCheckboxList] = useState(checkboxListArr)
   // создание массива выбранных чекбоксов
   const [selectedCheckbox, setSelectedCheckbox] = useState([])
   // рендеринг доступных билетов согласно фильтрам и сортировке
-  const [currentFlights, setCurrentFlights] = useState(flights)
+  const [currentFlights, setCurrentFlights] = useState(tickets)
   // рендеринг кнопок сортировки билетов
   const [flightSortButtons, setFlightSortButtons] = useState(buttonSelector)
   // создание массива выбранной сортировки
   const [activeSortButton, setActiveSortButton] = useState('')
+
+  useEffect(() => {
+    dispatch(getTicketList(2))
+  }, [dispatch])
+
+  // useEffect(() => {
+  //   flights = 
+  // }, [flights])
 
   // изменяет массив выбранных чекбоксов
   useEffect(() => {
@@ -36,7 +47,7 @@ const App =  () =>  {
     let arrFlight = [];
     // фильтрует массив относительно выбранных чекбоксов
     if (selectedCheckbox.length) {
-      arrFlight = flights.filter(item => {
+      arrFlight = tickets.filter(item => {
         if (selectedCheckbox.includes(item.transfer.length)) {
           return item
         }
@@ -92,7 +103,6 @@ const App =  () =>  {
         </main>
       </div>
     </div>
-    
   )
 }
 
