@@ -6,7 +6,7 @@ export const getTicketList = searchId => ({
   searchId: searchId
 })
 
-const initialState = data.flights || []
+const initialState = data.tickets || []
 
 export const ticketList = (state = initialState, action) => {
 

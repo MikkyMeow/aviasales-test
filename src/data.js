@@ -1,5 +1,5 @@
 export const data =  {
-  flights: [
+  tickets: [
     {
       id: 1,
       price: 7777,
