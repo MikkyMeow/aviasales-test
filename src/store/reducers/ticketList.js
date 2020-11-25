@@ -10,8 +10,6 @@ const initialState = data.tickets || []
 
 export const ticketList = (state = initialState, action) => {
 
-  console.log(state, 'state');
-  console.log(action, 'actions');
   switch(action.type){
     case 'GET_TICKET_LIST':
       return state

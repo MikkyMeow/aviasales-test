@@ -1,21 +1,23 @@
 import React, { useState, useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
+
 import Logo from './components/atoms/Logo'
 import Filter from './components/organisms/Filter'
 import FlightSelector from './components/organisms/FlightSelector'
 import Ticket from './components/organisms/Ticket'
 import { data } from './data.js'
 import {getTicketList} from './store/reducers/ticketList'
-// import axios from 'axios'
+import axios from 'axios'
 import './styles/style.scss'
 
 const checkboxListArr = data.checkboxList
 const buttonSelector = data.buttonSelector
 
 const App =  () =>  {
+  
+  const searchId = axios.get('https://habr.com').then((e) => console.log(e.data.searchId))
+  console.log('searchId ', searchId)
 
-  // Запрос на бэк
-  // const result = axios.get('https://front-test.beta.aviasales.ru/tickets?searchId=clzw')
   const dispatch = useDispatch()
   const tickets = useSelector(state => state.ticketList)
   
@@ -51,12 +53,10 @@ const App =  () =>  {
     }
     // сортировка по цене
     if (activeSortButton === 'cheapest') {
-      console.log(arrFlight);
       arrFlight.sort((a, b) => a.price - b.price)
     }
     // сортировка по времени
     if (activeSortButton === 'fastest') {
-      console.log(arrFlight);
       arrFlight.sort((a, b) => a.duration - b.duration)
     }
     setCurrentTickets(
